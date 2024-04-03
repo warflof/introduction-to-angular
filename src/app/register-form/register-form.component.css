@@ -1,0 +1,16 @@
+form input{
+    margin: 5px;
+    display: flex;
+}
+
+form label {
+    font-weight: bold;
+}
+
+button {
+    margin: 2px;
+}
+
+.errorMessage {
+    font-style: italic;
+}

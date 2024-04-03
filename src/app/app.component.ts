@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { HousingLocation } from './housing-location';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'fairhouse';
+
+  isSectionOneActive = true;
 
   selectedLocation: HousingLocation | undefined;
 
@@ -41,8 +45,14 @@ export class AppComponent {
     }
   ];
 
+
+
   updateSelectedLocation(location: HousingLocation)  {
     this.selectedLocation = location;
+  }
+
+  changeSection() {
+    this.isSectionOneActive = !this.isSectionOneActive;
   }
 
 }

@@ -1,18 +1,37 @@
 <main>
+  <mat-toolbar>
   <header><img src="../assets/logo.svg" alt="fairhouse">Fairhouse</header>
- <section>
+  <button mat-icon-button [matMenuTriggerFor]="menu"  aria-label="Menu icon"> 
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click) ="changeSection()">Location</button>
+    <button 
+    mat-menu-item
+    (click) ="changeSection()">Register</button>
+  </mat-menu>
+  </mat-toolbar>
+ <section *ngIf="!isSectionOneActive">
+<!-- Trouver le moyen de mettre ça dans une route -->
    <app-housing-list 
    [locationList]="housingLocationList"
    (locationSelectedEvent)="updateSelectedLocation($event)">
-   <article>
-    <img [src]="selectedLocation?.photo">
-    <p>{{selectedLocation?.name}}</p>
-    <p>{{selectedLocation?.availableUnits}}</p>
-    <p>{{selectedLocation?.city}}, {{selectedLocation?.state}}</p>
-    <p>{{selectedLocation?.laundry ? "Has laundry" : "Does Not have laundry"}}</p>
-    <p>{{selectedLocation?.wifi ? "Has wifi" : "Does Not have wifi"}}</p>
-   </article>
   </app-housing-list>
+
+  <!-- <mat-slide-toggle>Toggle me</mat-slide-toggle> -->
+  <article>
+    <ng-container *ngIf="selectedLocation">
+      <img [src]="selectedLocation.photo">
+      <p>{{selectedLocation.name}}</p>
+      <p>{{selectedLocation.availableUnits}}</p>
+      <p>{{selectedLocation.city}}, {{selectedLocation.state}}</p>
+      <p>{{selectedLocation.laundry ? "Has laundry" : "Does Not have laundry"}}</p>
+      <p>{{selectedLocation.wifi ? "Has wifi" : "Does Not have wifi"}}</p>
+    </ng-container> 
+  </article>
+ </section>
+ <section class="register-form" *ngIf="isSectionOneActive">
+  <app-register-form ></app-register-form>
  </section>
  
 </main>

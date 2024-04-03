@@ -1,0 +1,51 @@
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    
+    <label for="first-name">Nom: </label>
+    <input id="first-name" type="text" formControlName="name" />
+  
+    <div
+      *ngIf="signUpForm.controls?.['name']?.invalid && (signUpForm.controls?.['name']?.dirty || signUpForm.controls?.['name']?.touched)">
+        <div class="errorMessage" *ngIf="signUpForm.controls?.['name']?.errors?.['required']">
+            Un nom est requis.
+        </div>
+        <div class="errorMessage" *ngIf="signUpForm.controls?.['name']?.errors?.['minlength']">
+            Le nom doit contenir 5 caractères minimum.
+        </div>
+    </div>
+    <br/>
+
+    <div formGroupName="birthDate">
+        <p>Date de naissance</p>
+        <label for="day">Jour: </label>
+        <input id="day" type="text" formControlName="day"/>
+        <br/>
+
+            <div
+            *ngIf="signUpForm.controls?.['birthDate']?.invalid && (signUpForm.controls?.['birthDate']?.dirty || signUpForm.controls?.['birthDate']?.touched)">
+                <div class="errorMessage" *ngIf="signUpForm.controls?.['birthDate']?.get('day')?.errors?.['required']">
+                    Un jour est requis.
+                </div>
+                <div class="errorMessage" *ngIf="signUpForm.controls?. ['birthDate']?.get('day')?.errors?.['min'] || signUpForm.controls?. ['birthDate']?.get('day')?.errors?.['max']">
+                    Un jour compris entre 1 et 31 est requis.
+                </div>
+            </div>
+
+
+            <label for="month">Mois: </label>
+            <input id="month" type="text" formControlName="month"/>
+            <br/>
+
+            <label for="year">Année: </label>
+            <input id="year" type="text" formControlName="year"/>
+            <br/>
+
+            <button type="button" (click)="updateProfile()">
+                Mettre à jour
+            </button>
+            <button type="submit" [disabled]="!signUpForm.valid">
+                Valider le Profil
+            </button>
+
+    </div>
+
+</form>

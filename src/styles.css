@@ -1,8 +1,29 @@
 * {
     font-family: 'Be Vietnam Pro', sans-serif;
-    color: #555B6E;
+    
 }
 body, p, h1 {
     margin: 0;
     padding: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-toolbar  {
+    background-color: #555B6E;
+}
+
+.mat-toolbar button {
+    color: aliceblue;
+    
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+section {
+    margin-top: 20px;
 }

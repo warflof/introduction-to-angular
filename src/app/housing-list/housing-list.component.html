@@ -3,6 +3,5 @@
 
 <article *ngFor="let location of results">
     <p>{{location.name}}</p>
-    <label>{{location.city}}</label>
     <button (click)="selectLocation(location)">View</button>
 </article>
